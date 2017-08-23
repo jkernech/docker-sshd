@@ -1,10 +1,11 @@
 #!/bin/sh
 
+# Install additional packages if provided
 if [ -n "$ALPINE_PACKAGES" ]; then
   apk add --no-cache ${ALPINE_PACKAGES}
 fi
 
-# Generate Host keys, if required
+# Generate host key, if not provided
 if [ ! -f /etc/ssh/ssh_host_* ]; then
   ssh-keygen -A
 fi
